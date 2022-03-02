@@ -1,0 +1,116 @@
+<section id="payment-section">
+  <div class="nav">
+    <div class="nav-item" matRipple>
+      <mat-icon>help_outline</mat-icon>
+      <span>{{ Text.nav.help }}</span>
+    </div>
+    <div class="nav-item" matRipple>
+      <mat-icon>account_circle_outline</mat-icon>
+      <span>{{ Text.nav.signIn }}</span>
+    </div>
+    <form [formGroup]="langForm">
+      <mat-form-field class="lang-select">
+        <mat-icon>outlined_flag</mat-icon>
+        <mat-select formControlName="langCode" color="primary" #mSelect (selectionChange)="goAnotherLangPage(mSelect.value)">
+          <mat-option *ngFor="let item of langCodeOptions" [value]="item">
+            {{ item }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <div class="content">
+    <div class="stepper-container">
+      <div class="stepper-group">
+        <p class="step" *ngIf="NowStep === 1">1</p>
+        <p class="step done" *ngIf="NowStep !== 1">
+          <mat-icon>done</mat-icon>
+        </p>
+        <p>{{ Text.step.fillData }}</p>
+      </div>
+      <p class="stepper-line"></p>
+      <div class="stepper-group">
+        <p class="step" *ngIf="!(NowStep === 3)">2</p>
+        <p class="step done" *ngIf="NowStep === 3">
+          <mat-icon>done</mat-icon>
+        </p>
+        <p>{{ Text.step.pay }}</p>
+      </div>
+    </div>
+
+    <main>
+      <ng-container *ngIf="NowStep === 1">
+        <h1 class="title">{{ Text.step.fillData }}</h1>
+        <p>Please enter your personal data and press continue</p>
+
+        <form [formGroup]="userInfoForm" (ngSubmit)="userInfoForm.valid ? goNextStep() : ''">
+          <div class="form-container">
+            <p>Name*</p>
+            <mat-form-field appearance="outline">
+              <input matInput type="text" formControlName="name" color="primary" />
+              <mat-error>This is required.</mat-error>
+            </mat-form-field>
+
+            <p>Last Name*</p>
+            <mat-form-field appearance="outline">
+              <input matInput type="text" formControlName="lastName" color="primary" />
+              <mat-error>This is required.</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="action-container">
+            <button mat-flat-button class="action" type="submit">
+              {{ Text.button.continue }}&nbsp;
+              <mat-icon style="color: #fff">chevron_right</mat-icon>
+            </button>
+          </div>
+        </form>
+      </ng-container>
+
+      <ng-container *ngIf="NowStep === 2">
+        <h1 class="title">{{ Text.step.pay }}</h1>
+        <p>After making the payment you will receive a confirmation email with details of your purchase</p>
+
+        <div class="pay-desc">
+          <img src="../../assets//images/credit-card.png" style="width: min(20%, 100px)" />
+          <h2>Credit Card</h2>
+          <p>
+            You will be redirected to a secure payment platform. This is a secure process. The validation of your payment can take up to 24 hours.
+          </p>
+          <div class="credit-card-container">
+            <img src="../../assets//images/Mastercard.png" />
+            <img src="../../assets/images//visa.png" />
+          </div>
+        </div>
+
+        <div class="action-container">
+          <button mat-flat-button class="action" (click)="goPrevPage()">
+            <mat-icon style="color: #fff">chevron_left</mat-icon>
+            &nbsp;
+            {{ Text.button.back }}
+          </button>
+          <button mat-flat-button class="action" (click)="submit()">
+            {{ Text.button.pay }}&nbsp;
+            <mat-icon style="color: #fff">chevron_right</mat-icon>
+          </button>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="NowStep === 3">
+        <div class="completed-container">
+          <h1 class="title">{{ Text.step.finish }}</h1>
+          <img src="../../assets/images/document.png" />
+          <p *ngIf="getLangFormValue === 'EN'">{{ orderMsg.en }}</p>
+          <p *ngIf="getLangFormValue === 'CN'">{{ orderMsg.cn }}</p>
+        </div>
+        <div class="action-container">
+          <button mat-flat-button class="action" (click)="goNextStep()">
+            <mat-icon style="color: #fff">home</mat-icon>
+            &nbsp;&nbsp;&nbsp;&nbsp;Home
+          </button>
+        </div>
+      </ng-container>
+    </main>
+  </div>
+</section>

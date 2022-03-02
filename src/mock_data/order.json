@@ -1,0 +1,12 @@
+{
+  "returnCode": 0,
+  "title": {
+    "en": "Order Created",
+    "zh_CN": "訂單已創建"
+  },
+  "message": {
+    "en": "Congratulations, your payment was successful. Shortly a confirmation email will arrive to your inbox",
+    "zh_CN": "恭喜您，付款成功。您即將收到一封確認電子郵件"
+  },
+  "img": "diploma.svg"
+}

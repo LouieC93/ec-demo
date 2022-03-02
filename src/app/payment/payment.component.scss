@@ -1,0 +1,229 @@
+@import '../../assets//scss/icon.scss';
+
+#payment-section {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  .nav {
+    margin: 1.5rem;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .content {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-top: 1.5rem;
+    overflow: hidden;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+#payment-section .nav {
+  .nav-item {
+    display: flex;
+    align-items: center;
+  }
+  .mat-icon {
+    @include iconSize(28px);
+    margin-right: 0.5rem;
+  }
+  .lang-select::ng-deep {
+    width: 80px;
+    height: 45px;
+    transform: translateY(3px);
+    .mat-form-field-infix {
+      display: flex;
+      border: none;
+    }
+    .mat-form-field-underline {
+      display: none;
+    }
+    .mat-select {
+      display: flex;
+      align-items: center;
+    }
+    .mat-select-value {
+      display: flex;
+      max-width: none;
+      margin-right: 0.5rem;
+    }
+  }
+  @media (min-width: 568px) {
+    justify-content: flex-end;
+    .nav-item {
+      margin-right: 5%;
+    }
+    .mat-icon {
+      @include iconSize(36px);
+    }
+    .lang-select::ng-deep {
+      width: 100px;
+      height: 52px;
+    }
+  }
+}
+
+#payment-section .content {
+  .stepper-container {
+    flex-shrink: 0;
+    width: min(100%, 750px);
+    display: flex;
+    justify-content: center;
+  }
+  main {
+    width: 80%;
+    flex-grow: 1;
+    margin: 1rem 0 2rem;
+    background: #fff;
+    border: 1px solid #000;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 1rem;
+    overflow: hidden;
+  }
+}
+
+#payment-section .content .stepper-container {
+  .stepper-group {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin: 0 0.5rem;
+    .step {
+      width: 2.5rem;
+      height: 2.5rem;
+      background: dodgerblue;
+      border-radius: 50%;
+      border: 0.5px solid #000;
+      font-size: 1.5rem;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .step + p {
+      margin-top: 0.5rem;
+    }
+    .mat-icon {
+      color: #fff;
+    }
+    .done {
+      background: green;
+    }
+  }
+  .stepper-line {
+    width: calc((100% / 2) - (50px * 2));
+    height: 0.5px;
+    border-bottom: 1px dotted #000;
+    position: relative;
+    top: 1.25rem;
+  }
+}
+
+#payment-section .content main {
+  & > * {
+    width: min(100%, 750px);
+    text-align: center;
+    flex-shrink: 0;
+  }
+  > p {
+    margin-top: 1rem;
+  }
+  form {
+    flex-shrink: 1;
+    flex-grow: 1;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    overflow: auto;
+    margin: 1rem 0;
+    > * {
+      flex-shrink: 0;
+    }
+    .form-container {
+      width: 100%;
+      flex-grow: 1;
+      flex-shrink: 1;
+      display: flex;
+      flex-flow: column;
+      overflow: auto;
+    }
+    p {
+      text-align: left;
+      margin-top: 1.5rem;
+    }
+  }
+  %scroll-sontent {
+    flex-grow: 1;
+    flex-shrink: 1;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    overflow: auto;
+    box-sizing: border-box;
+  }
+  .pay-desc {
+    @extend %scroll-sontent;
+    border: 1px solid #ccc;
+    margin: 1rem;
+    padding: 1rem;
+    > * {
+      flex-shrink: 0;
+    }
+    h2 {
+      font-size: 18px;
+    }
+    p {
+      margin: 1rem 0;
+    }
+    .credit-card-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: min(20%, 75px);
+      }
+      img + img {
+        margin-left: 5%;
+      }
+    }
+  }
+  .completed-container {
+    @extend %scroll-sontent;
+    p {
+      margin: 1rem 0;
+    }
+    img {
+      width: min(30%, 150px);
+      margin-top: 1rem;
+    }
+    & + .action-container {
+      margin-top: 1rem;
+      justify-content: center;
+    }
+  }
+  .action-container {
+    width: min(100%, 750px);
+    display: flex;
+    justify-content: flex-end;
+    .action {
+      background: dodgerblue;
+      color: #fff;
+      padding: 0 1.5rem;
+      box-shadow: 2px 2px 3px #3336;
+      .mat-icon {
+        @include iconSize(28px);
+        margin: 0 -6px 2px;
+      }
+    }
+    .action:nth-child(2) {
+      margin-left: auto;
+    }
+  }
+}
