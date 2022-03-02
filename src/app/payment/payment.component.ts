@@ -44,7 +44,6 @@ export class PaymentComponent implements OnInit {
     this.Text = this.getDiffLangText(lang);
     CONSOLE.log(this.Text);
   }
-  // CONSOLE.log('[PaymentComponent: initLangFormOption] error', err);
 
   initLangForm() {
     const lang = this.route.snapshot.paramMap.get('lang')!;
@@ -77,7 +76,6 @@ export class PaymentComponent implements OnInit {
    * assume submit data & send request in step 2 -> 3
    */
   submit() {
-    CONSOLE.log(86876876);
     this.paymentManager
       .getOrderRes$('some reqData')
       .pipe(
