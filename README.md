@@ -1,27 +1,56 @@
-# EcDemo
+# EC Demo _readme
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
+## Repository
 
-## Development server
+- [LouieC93/ec-demo (github.com)](https://github.com/LouieC93/ec-demo)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Quick Start
 
-## Code scaffolding
+- After cloning the project, open terminal and run `npm i` to install all used packages.
+- When installation finished, run `ng s` then open browser and go to `http://localhost:4200/`. You will be directed to the right URL `http://localhost:4200/en/payment/1`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## Structure
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- app
+    - core: core service like custom httpService, encap-console...
+        - httpService: implentment 2 environment to switch between mock data and real API dada.
+    - _shared: shared module and other shared component.
+    - payment: payment component and router setting.
+        - domain
+            - payment.service: integrated API sending.
+            - payment.management.service: manage data status and map data.
+- mock_data: all mock json files is here, with httpService and environment config, it will auto switch between dev-mock mode and real-API mode.
 
-## Running unit tests
+---
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Page Guide
 
-## Running end-to-end tests
+### Step1
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Click select menu at top right corner anytime, it will change the router path and language of displayed text.
 
-## Further help
+![Untitled](_readme/Untitled.png)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![Untitled](_readme/Untitled%201.png)
+
+- The user-info form has required validator. If you click continue button without filling in anything, you won’t be allowed to go to step 2.
+
+![Untitled](_readme/Untitled%202.png)
+
+### Step2
+
+- The main content area is scrollable and mobile layout is scrollable too.
+
+![Untitled](_readme/Untitled%203.png)
+
+![Untitled](_readme/Untitled%204.png)
+
+![Untitled](_readme/Untitled%205.png)
+
+### Step3
+
+- When go to step 3, I mock a delay on API send function. Click home button will go back to step 1 with new user-info form.
+
+![Untitled](_readme/Untitled%206.png)
