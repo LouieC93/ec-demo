@@ -1,0 +1,41 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$primary: dodgerblue;
+
+$mat-custom-blue: (
+  50: #e4f2ff,
+  100: #bcdeff,
+  200: #8fc8ff,
+  300: #62b1ff,
+  400: #40a1ff,
+  500: #1e90ff,
+  600: #1a88ff,
+  700: #167dff,
+  800: #1273ff,
+  900: #0a61ff,
+  A100: #ffffff,
+  A200: #f5f8ff,
+  A400: #c2d5ff,
+  A700: #a8c3ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+$custom-primary: mat-palette($mat-custom-blue);
+$custom-theme: mat-light-theme($custom-primary, $custom-primary);
+
+@include angular-material-theme($custom-theme);

@@ -1,0 +1,9 @@
+.mat-icon {
+  color: dodgerblue;
+}
+
+@mixin iconSize($size) {
+  width: $size;
+  height: $size;
+  font-size: $size;
+}
